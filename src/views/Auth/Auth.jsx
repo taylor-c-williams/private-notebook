@@ -16,14 +16,10 @@ export default function Auth({ isSigningUp = false }) {
         signUpUser(email, password);
         history.push('/confirm-email');
       } else {
-        // signInUser(email, password)
-
-        // set the user ({id, email})
-        setUser({ id, email });
-        // redirect to /notes
+        signInUser(email, password);
+        setUser({ email });
+        history.push('/notes');
       }
-
-      // Use the corresponding functions from `/services/users` for both cases
     } catch (error) {
       throw error;
     }

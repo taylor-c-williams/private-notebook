@@ -6,7 +6,7 @@ import { useUser } from '../../context/UserContext';
 export default function PrivateRoute({ children, ...rest }) {
   // TODO: Use the user in context to determine whether to redirect to /login
   const { user } = useUser();
-
+  console.log(user);
   return (
     <Route
       {...rest}

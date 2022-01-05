@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useNotes } from '../../context/NoteContext';
 import NoteForm from '../../components/Notebook/NoteForm';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
@@ -9,6 +9,7 @@ export default function EditNote() {
   const { notes, getNote, updateNote } = useNotes();
   const [note, setNote] = useState({});
   const [message, setMessage] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
     if (!notes.loading) setNote(getNote(id));
@@ -23,6 +24,7 @@ export default function EditNote() {
       setTimeout(() => {
         setMessage('');
       }, 3000);
+      // history.push(`/notes/${id}`);
     }
   };
 

@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { signOutUser } from '../../services/users';
 
 export default function AuthButton({ className }) {
   const { user, setUser } = useUser();
+  const history = useHistory();
 
   return (
     <>
@@ -13,6 +14,7 @@ export default function AuthButton({ className }) {
           onClick={async () => {
             await signOutUser();
             setUser({});
+            history.push('/');
           }}
         >
           Sign Out
